@@ -4,14 +4,16 @@ const app = express();
 const port = process.env.PORT || 3001
 const connectDB = require('./config/db')
 const jtRoutes = require('./routes/jtRoutes')
+const cors = require('cors')
+
 
 // Connect to DB
 connectDB()
 
 // Middleware
 app.use(express.json())
-
-
+app.use(cors());
+app.use(express.urlencoded({ extended: true })); 
 
 
 //Routes
