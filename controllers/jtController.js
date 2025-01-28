@@ -1,6 +1,6 @@
 const JobData = require('../models/jtSchema');
 
-//Create job
+//Create 
 async function createJob(req,res) {
     try{
         let newJob = await JobData.create(req.body)
@@ -21,6 +21,15 @@ async function readJob(req,res){
     }
 }
 
+//Update
+async function updateJob(req,res){
+    try {
+      let updatedJob = await JobData.findByIdAndUpdate(req.params.id, req.body);
+      res.json(updatedJob);  
+    } catch (error) {
+      res.status(500).json({error: error.message})
+    }
+}
 
 
 
@@ -28,4 +37,4 @@ async function readJob(req,res){
 
 
 
-module.exports = { createJob, readJob };
+module.exports = { createJob, readJob, updateJob };
