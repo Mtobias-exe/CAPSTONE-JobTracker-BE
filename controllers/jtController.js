@@ -31,10 +31,20 @@ async function updateJob(req,res){
     }
 }
 
+//Delete
+async function deleteJob(req,res){
+    try {
+        let deletedJob = await JobData.findByIdAndDelete(req.params.id);
+        res.json(deletedJob)
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+}
 
 
 
 
 
 
-module.exports = { createJob, readJob, updateJob };
+
+module.exports = { createJob, readJob, updateJob, deleteJob};
