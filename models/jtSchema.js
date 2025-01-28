@@ -19,7 +19,8 @@ const jobDataModel = new mongoose.Schema({
     status:{
         type: String,
         enum: ['pending', 'rejected', 'accepted'],
-        required: true
+        required: true,
+
     },
     
     notes:{
