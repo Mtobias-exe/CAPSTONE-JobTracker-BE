@@ -21,6 +21,16 @@ async function readJob(req,res){
     }
 }
 
+// Read job by id
+async function readSingleJob(req,res){
+    try {
+        let singleJob = await JobData.findById(req.params.id)
+        res.json(singleJob)
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+}
+
 //Update
 async function updateJob(req,res){
     try {
@@ -47,4 +57,4 @@ async function deleteJob(req,res){
 
 
 
-module.exports = { createJob, readJob, updateJob, deleteJob};
+module.exports = { createJob, readJob, updateJob, deleteJob, readSingleJob};
